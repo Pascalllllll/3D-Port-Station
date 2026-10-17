@@ -2,7 +2,7 @@
 
 See every open port on your computer as a street of garages. Each port has its own garage with the port number over the door, and a car parks inside while the port is open. You can see which ports are busy and which are idle, which program owns each one and who is connected to it, and you can switch any of them off and back on.
 
-![Port Station showing a demo computer: rows of neon garages along streets, each with a port number over the door and a car parked inside, pink garages with signal rings for busy ports, cyan for idle ones, an empty red pad where a switched-off port's garage flew away, and the Ports list on the left](docs/screenshot.jpg)
+![Port Station showing a demo computer: rows of neon garages along streets, each with a port number over the door and a car parked inside, glowing violet garages with signal rings for busy ports, dim ones for idle ports, a row of empty spare garages, an empty red pad where a switched-off port's garage flew away, and the Ports list on the left](docs/screenshot.jpg)
 
 ## What you see
 
