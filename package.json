@@ -1,0 +1,15 @@
+{
+  "name": "port-station",
+  "version": "1.0.0",
+  "description": "Every open port on your computer as a garage on a street: what's busy, what's idle, who owns it, and a switch to turn it off or back on.",
+  "author": "Hosea",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "bin": { "port-station": "agent/port-station.mjs" },
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node agent/port-station.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

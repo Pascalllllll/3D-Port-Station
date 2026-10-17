@@ -1,0 +1,10 @@
+node_modules
+*.log
+# copied in by the Vercel build
+web/port-station.mjs
+
+# Private run notes, kept on this machine
+LOCAL.md
+
+# old versions kept before redesigns
+.backup
