@@ -2,18 +2,20 @@
 
 See every open port on your computer as a street of garages. Each port has its own garage with the port number over the door, and a car parks inside while the port is open. You can see which ports are busy and which are idle, which program owns each one and who is connected to it, and you can switch any of them off and back on.
 
-![Port Station showing a demo computer: rows of neon garages along streets, each with a port number over the door and a car parked inside, glowing violet garages with signal rings for busy ports, dim ones for idle ports, a row of empty spare garages, an empty red pad where a switched-off port's garage flew away, and the Ports list on the left](docs/screenshot.jpg)
+![Port Station showing a demo computer: rows of garages along streets in the dark theme, each with a port number over the door and a car parked inside, soft violet garages with signal rings for busy ports, muted ones for idle ports, a row of empty spare garages, an empty pad with a rose barrier where a switched-off port's garage flew away, and the Ports list on the left](docs/screenshot.jpg)
 
 ## What you see
 
 | In the station | What it means |
 |---|---|
 | A car parked in a garage | A program is listening on that port. The number over the door is the port. |
-| Pink glow, rings rising from the roof antenna | **In use**: something is connected right now. More connections make the rings faster. |
-| Cyan glow, faint wire | **Idle**: the port is open, but nobody is connected. |
-| Empty red pad with a barrier, no garage | **Off**: you stopped it from Port Station. It can be switched back on. |
-| Green sports car | A **beacon** you opened yourself (see below). |
-| Grey car, "hidden owner" | Another user (often the system) owns the port, so the helper can't see which program it is. |
+| Accent glow on the garage, rings rising from the roof antenna | **In use**: something is connected right now. More connections make the rings faster. |
+| Muted garage, antenna blinking slowly, no rings | **Idle**: the port is open, but nobody is connected. |
+| Empty pad with a rose barrier, no garage | **Off**: you stopped it from Port Station. It can be switched back on. |
+| Sage-green garage with a sports car | A **beacon** you opened yourself (see below). The helper's own port is sage green too. |
+| Plain grey car, "hidden owner" | Another user (often the system) owns the port, so the helper can't see which program it is. |
+
+There are two looks, and the sun/moon button in the corner switches between them: **light** (ivory garages, gold for in use) and **dark** (soft black, violet for in use). It follows your system setting until you pick one.
 
 Cars come in three shapes: sedan, sports car and truck. Every program gets its own paint color and shape, so all of `node`'s ports look alike. Empty garages marked FREE wait at the end of the street. When a port opens, a car drives down the street into a garage, which now shows that port number. When you switch a port off, the car backs out and drives away, then the garage flies off on its thrusters. Switch it back on and the garage lands again and the car returns.
 
@@ -80,7 +82,7 @@ To restart programs, the helper saves their command line and folder (and on Linu
 
 ## How it works
 
-- **Reading ports.** The helper runs the system's own tools: `ss` on Linux, `lsof` on macOS, `netstat` + `tasklist` on Windows. It merges IPv4 and IPv6 listeners of the same port into one car. To find out who is connected, it matches each connection's far end against the other connections on the machine, so a browser tab talking to your dev server shows up as `chrome`. Program details come from `/proc` on Linux and `ps` on macOS. The page asks for a fresh list every 1.5 seconds.
+- **Reading ports.** The helper runs the system's own tools: `ss` on Linux, `lsof` on macOS, `netstat` + `tasklist` on Windows. It merges IPv4 and IPv6 listeners of the same port into one garage. To find out who is connected, it matches each connection's far end against the other connections on the machine, so a browser tab talking to your dev server shows up as `chrome`. Program details come from `/proc` on Linux and `ps` on macOS. The page asks for a fresh list every 1.5 seconds.
 - **The station** is [three.js](https://threejs.org) with an orthographic camera tilted down at about 35°, so it reads as a semi-2D drawing: rows stay straight and every garage is the same size on screen. Garages sit in rows of 7 (5 on narrow screens, 3 on phones in portrait), each row with its own street, and the station always keeps at least two FREE garages. A port keeps its garage while it exists. Cars follow a path along the street, turn in and back out again. The glow comes from a bloom pass, and the ground grid and pulse rings are drawn by one shader.
 - **The site itself** is plain HTML, CSS and JavaScript with no build step. The helper file you download is the same one that serves the station at `http://127.0.0.1:7777`.
 
